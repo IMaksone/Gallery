@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/public/CSS/Cap_BotMenuCSS.css" type="text/css" />
+    <link rel="stylesheet" href="/public/CSS/UserCSS.css" type="text/css" />
+    <script src="/public/JS/Vue/vue.js"></script>
+    <link rel="icon" href="/public/Img/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="/public/Img/favicon.png" type="image/png">
+
+    <title>Личный кабинет</title>
+</head>
+
+<body> <% include ../Blocks/Cap.ejs %>
+    <div class="content">
+        <a href="/logout" class="exit" type="submit">Выйти</a>
+
+
+        <div class="inf_history">
+            <div class="inf_acc">
+                <h3>Информация об аккаунте</h3>
+                <p>Login: <%= user.login %></p>                
+            </div> 
+            <form enctype="multipart/form-data" method="post" action="/upload-image" class="upload_image">
+                <p><%= err_setImage %></p>
+                <p><input type="file" name="image" accept="image/jpeg, image/png" required>                
+                <input type="name" name="name" placeholder="Название" required>
+                <textarea type="description" name="description" placeholder="Описание"></textarea>
+                <input type="submit" value="Загрузить"></p>
+            </form> 
+
+            <div class="you_images">
+                <h3>Ваши изображения</h3>
+                <div class="images">
+                    <%if (images != "") for (let i = 0; i < images.length; i++) {%>
+                        <%- include("../Blocks/img_user.ejs", {i: i});%>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+
+    </div> <% include ../Blocks/Bot.ejs %> </body>
+
+</html>

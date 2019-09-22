@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/public/CSS/Cap_BotMenuCSS.css" type="text/css" />
+    <link rel="stylesheet" href="/public/CSS/LoginCSS.css" type="text/css" />
+    <script src="/public/JS/Vue/vue.js"></script>
+
+    <link rel="icon" href="/public/Img/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="/public/Img/favicon.png" type="image/png">
+
+    <title>Вход | Регистрация</title>
+</head>
+
+<body> <% include ../Blocks/Cap.ejs %>
+    <div class="content">
+        <div class="forms">
+            <div class="form" id="signIn">
+                <h3>Вход</h3>
+                <p><%= err_signIn %></p>
+                <form method="POST" action="/signIn">
+                    <div>
+                        <input type="login" name="login" placeholder="Логин" required>
+                    </div>
+                    <div>
+                        <input type="password" name="password" placeholder="Пароль" required>
+                    </div>
+                    <button class="butt door" type="submit">Войти</button>
+                </form>
+            </div>
+            <div class="form">
+                <h3>Регистрация</h3>
+                <form method="POST" action="/signUp">
+                    <p><%= err_signUp %></p>
+                    <div>
+                        <input type="login" name="login" placeholder="Логин" required>
+                    </div>
+                    <div>
+                        <input type="password" name="password" placeholder="Придумайте пароль" required>
+                    </div>
+                    <button class="butt registration_butt" type="submit">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+
+        
+        
+    </div>
+
+    <% include ../Blocks/Bot.ejs %>
+</body>
+
+</html>

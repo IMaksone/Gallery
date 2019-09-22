@@ -1,0 +1,127 @@
+body{
+    height: 100%;
+    background-color:rgb(77, 77, 77);
+}
+h3{
+    margin-top: 0px;
+    font-size: 24px;
+}
+input{
+    outline: none;
+    background: rgba(50, 201, 168, 0.02);
+    border: 1px solid rgba(50, 201, 168, 0.6);
+    border-radius: 7px;
+    padding: 8px;
+    margin: 10px;
+    margin-left: 0px;
+    padding-left: 16px;
+    font-size: 14px;
+    width: 300px;
+}
+input:hover{
+    border: 2px solid rgba(50, 201, 168);    
+    padding: 7px;
+    padding-left: 15px;
+}
+input:focus{
+    border: 2px solid rgba(50, 201, 168);    
+    padding: 7px;
+    padding-left: 15px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+p{
+    margin-top: 0px;
+    color: rgba(236, 59, 87);
+    text-align: center;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.forms{
+    display: flex;
+    flex-direction: column;
+    align-items: center;     
+    margin-top: 20px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    width: 370px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.514);    
+}
+
+#warning{
+    margin-top: 25px;
+}
+.butt{
+    margin-top: 15px;
+    font-size: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px; 
+    border-radius: 7px;
+    border: 1px solid rgba(236, 59, 87, 0.6);
+    background-color: rgba(236, 59, 87, 0.02);
+}
+.butt:hover{
+    border: 2px solid rgba(236, 59, 87);    
+    padding-top: 4px;
+    padding-bottom: 4px; 
+}
+.registration_butt{    
+    width: 190px;
+}
+.door{
+    width: 60px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////Адаптация под разные экраны//////////////////////////*/
+/*//////////////////////////////////////////////////////////////////////////*/
+
+@media screen and (max-device-width: 480px) {
+    h3{
+        font-size: 18px;
+    }
+    input{
+        width: 200px;
+    }
+    .content{
+        margin-top: 30px;        
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .forms{
+        margin-top: 20px;
+        width: 220px;
+    }
+    .butt{
+        margin-top: 5px;
+        font-size: 16px;
+        font-weight: 600;
+    }    
+    .rigistration_butt{    
+        width: 170px;
+    }
+    .form{
+        width: 220px;   
+        margin: 15px; 
+        min-width: 220px;
+    }
+}

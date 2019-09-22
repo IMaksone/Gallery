@@ -1,0 +1,103 @@
+<header class="cap">
+    <div class="cap_block_top cap_items">
+        <span class="cap_data">+375 (33) 303-64-06</span>
+        <a href="/"><img class="logo_cap" src="/public/Img/home.svg" style="width:144px;height:25px"></a>
+        <span class="cap_data">ПН-ВС: с 11.00 до 21.00</span>
+    </div>
+
+
+    <div class="cap_block_bottom">
+        <div class="cap_block_bottom_inside">
+
+            <a class="login cap_item before_el" href="/signUp_signIn"><%= auth == true ? "Кабинет" : "Вход" %></a>
+            <!--<a class="login cap_item before_el" href="/user">Кабинет</a>-->
+            <div class="cap_items">
+                <a class="about_us_cap cap_item before_el cap_item_block" v-on:mouseover="look = 1"
+                    @mouseleave="look = 0" href="/">О нас</a>
+                <div class="cap_menu_block" v-on:mouseover="look = 1" @mouseleave="look = 0"
+                    :class="[look == 1 ? 'cap_menu_blockShow': true]">
+                    <a class="cap_menu_But before_el" href="/#products_week">Товары недели</a><br>
+                    <a class="cap_menu_But before_el" href="/#contacts">Контакты</a><br>
+                    <a class="cap_menu_But before_el" href="/#delivery">Доставка</a>
+
+                </div>
+            </div>
+            <div class="cap_items">
+                <a class="store cap_item before_el cap_item_block" v-on:mouseover="look = 3" @mouseleave="look = 0"
+                    href="/catalog">Каталог</a>
+                <div class="cap_menu_block" v-on:mouseover="look = 3" @mouseleave="look = 0"
+                    :class="[look == 3 ? 'cap_menu_blockShow': true]">
+                    <form action="/catalog" method="post">
+                        <input type="hidden" name="food" value="food" />
+                        <button class="cap_menu_But before_el" type="submit">Спортивное питание</button>
+                    </form>
+                    <form action="/catalog" method="post">
+                        <input type="hidden" name="food" value="food" />
+                        <input type="hidden" name="protein" value="protein" />
+                        <button class="cap_menu_subBut before_el" type="submit">Протеин</button>
+                    </form>
+                    <form action="/catalog" method="post">
+                        <input type="hidden" name="food" value="food" />
+                        <input type="hidden" name="collagen" value="collagen" />
+                        <button class="cap_menu_subBut before_el" type="submit">Коллаген</button>
+                    </form>
+                    <form action="/catalog" method="post">
+                        <input type="hidden" name="food" value="food" />
+                        <input type="hidden" name="omega-3" value="omega3" />
+                        <button class="cap_menu_subBut before_el" type="submit">Омега-3</button>
+                    </form>
+                    <form action="/catalog" method="post">
+                        <input type="hidden" name="food" value="food" />
+                        <input type="hidden" name="creatine" value="creatine" />
+                        <button class="cap_menu_subBut before_el" type="submit">Креатин</button>
+                    </form>
+                    <form action="/catalog" method="post">
+                        <input type="hidden" name="food" value="food" />
+                        <input type="hidden" name="melatonin" value="melatonin" />
+                        <button class="cap_menu_subBut before_el" type="submit">Мелатонин</button>
+                    </form>
+                    <form action="/catalog" method="post">
+                        <input type="hidden" name="food" value="food" />
+                        <input type="hidden" name="5-htp" value="htp5" />
+                        <button class="cap_menu_subBut before_el" type="submit">5-HTP</button>
+                    </form>
+                    <form action="/catalog" method="post">
+                        <input type="hidden" name="accessAndCloth" value="accessAndCloth" />
+                        <button class="cap_menu_But before_el" type="submit">Одежда и аксессуары</button>
+                    </form>
+                    <form action="/catalog" method="post">
+                        <input type="hidden" name="accessAndCloth" value="accessAndCloth" />
+                        <input type="hidden" name="clothing" value="clothing" />
+                        <button class="cap_menu_subBut before_el" type="submit">Одежда</button>
+                    </form>
+                    <form action="/catalog" method="post">
+                        <input type="hidden" name="accessAndCloth" value="accessAndCloth" />
+                        <input type="hidden" name="shakers" value="shakers" />
+                        <button class="cap_menu_subBut before_el" type="submit">Шейкеры</button>
+                    </form>
+                </div>
+            </div>
+
+            <a @click="getBaskLink()" class="cap_item before_el" id="basket" href="/basket">Корзина ({{quent}})</a>
+        </div>
+    </div>
+
+</header>
+<!--Скрипт для .cap-->
+<script>
+    new Vue({
+        el: ".cap",
+
+        data: {
+            look: 0,
+            quent: 0,
+        },
+        mounted() {
+            if (localStorage.basket) {
+                let basket = localStorage.basket;
+                basket = JSON.parse(basket);
+                if (basket.length > 2) this.quent = basket.length - 2;
+            }
+        },
+    })
+</script>

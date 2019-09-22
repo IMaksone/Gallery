@@ -1,0 +1,306 @@
+body{
+    font-family: 'Trebuchet MS', sans-serif;
+    height: 100%;
+}
+button{
+    font-family: 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+    border: none;    
+    padding: 0px;
+    margin: 0px;
+}
+
+a{    
+    text-decoration: none;
+    color: black;
+}
+
+.dryicons{
+    font-size: 11px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+.content{
+    min-height: calc(100vh - 220px);              
+    min-width: 420px;
+}
+.cap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+.bottom_menu, .cap{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 480px;
+}
+.logo_cap{
+    margin: 10px;
+}
+.cap_data{
+    margin: 30px;
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.7);
+}
+.cap_block_top{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 30px;    
+    /*
+    background-color: black;
+    box-shadow: 0 7px 9px rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    margin-bottom: 20px;*/
+}
+.cap_block_bottom{    
+    background-color: rgb(255, 255, 255);         
+    width: 96%;
+    border-radius: 10px;
+    box-shadow: 0 7px 9px rgba(0, 0, 0, 0.445);
+}
+.cap_block_bottom_inside{
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1400px;
+    padding-left: 40px;
+    height: 50px;
+    padding: 5px;    
+}
+.cap_item{
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;  
+    margin: 30px;  
+    position: relative; 
+}
+.cap_item_block{
+    padding-bottom: 30px;
+}
+.before_el:hover::before{
+    content: ' ';
+    position: absolute;
+    top: 21px;
+    left: 25%;
+    display: block;
+    width: 50%;
+    border-radius: 2px;
+    border: 2px solid rgb(236, 59, 87);
+}
+
+.cap_menu_block{   
+    display: none; 
+    position: absolute;
+    margin-top: 30px;
+    margin-left: -10px;
+    padding-top: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255);    
+    white-space: nowrap;
+    border-radius: 10px;
+    box-shadow: 0 7px 9px rgba(0, 0, 0, 0.445);
+    z-index: 5;
+}
+.cap_menu_blockShow{
+    display: block;
+}
+.cap_menu_But{    
+    display: inline-block;
+    position: relative;
+    color: black;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 9px;
+    padding-bottom: 6px;
+    white-space: nowrap;
+}
+.cap_menu_subBut{
+    position: relative;
+    color: black;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 13px;
+    font-weight: 540;
+    margin-top: 4px;
+    padding-bottom: 4px;
+    white-space: nowrap;
+}
+.cap_menu_subBut:hover::before{
+    top: 17px;
+    border-radius: 1px;
+    border-bottom: 1px solid rgb(236, 59, 87);
+}
+.bottom_menu{
+    position: relative;
+    display: flex;
+    align-items: flex-start;   
+    justify-content: center;
+    background-color: #222222;
+    color: rgb(221, 221, 221);
+    height: 220px;
+    margin-top: 30px; 
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 7px 9px rgba(0, 0, 0, 0.445);
+}
+.bot_menu_description{
+    width: 200px;
+    margin: 20px;
+    margin-left: 50px;
+}
+.bot_menu_text{
+    font-size: 12px;
+    font-weight: 300;
+}
+.bot_menu_block{
+    margin: 20px;
+}
+.bot_menu_hedline{
+    display: inline-block;
+    color: rgb(221, 221, 221);
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    padding-bottom: 5px; 
+    position: relative;
+}
+
+.bot_menu_items{
+    display: inline-block;
+    color: rgb(221, 221, 221);
+    margin-bottom: 7px;
+    font-size: 16px;
+    padding-bottom: 3px; 
+    position: relative;
+}
+.bot_menu_hedline:hover::before, .bot_menu_items:hover::before{
+    border: 1px solid rgb(221, 221, 221);
+    top: 24px;
+}
+.login, .about_us_cap, .store, #basket{
+    position: relative;
+}
+.login::after{
+    content: url(/public/Img/Login.svg);
+}
+.about_us_cap::after{
+    content: url(/public/Img/ClickBoadr.svg);
+}
+.store::after{
+    content: url(/public/Img/Bag.svg);
+}
+#basket::after{
+    content: url(/public/Img/Basket.svg);
+}
+.about_us_cap::after, .store::after{
+    padding-bottom: 30px;
+}
+.login::after, .about_us_cap::after, .store::after, #basket::after{
+    position: absolute;
+    padding-right: 7px;
+    width: 30px;
+    height: 30px;
+    left: -38px;
+    top: -7px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////Адаптация под разные экраны//////////////////////////*/
+/*//////////////////////////////////////////////////////////////////////////*/
+
+@media only screen and (max-device-width : 480px) {
+    .content{   
+        min-width: 280px;
+    }
+    .cap{
+        height: 110px;
+        min-width: 300px;
+    }
+    .cap_block_bottom{
+        width: 96%;
+        height: 50px;  
+        padding-top: 30px;         
+        padding-left: 10px;     
+    }
+    .cap_data, .cap_menu_blockShow{
+        display: none;
+    }
+    .cap_item{
+        color: black;
+        font-size: 14px;
+        margin-right: 10px;
+        margin-left: 10px;        
+        padding-bottom: 0px;
+    }
+    .cap_block_left, .cap_block_right{
+        font-size: 16px;
+          
+    }
+    .cap_block_left{
+        margin-left: 10px;
+    }
+    .cap_block_right{
+        margin-right: 7px;          
+    }
+    .before_el:hover::before{
+        top: 19px;
+    }
+    .bottom_menu{
+        height: 320px;
+        min-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .bot_menu_block {
+        margin: 10px;
+    }
+    .bot_menu_description {
+        width: 120px;
+        margin: 10px;
+    }
+    .bot_menu_hedline{        
+        font-size: 16px;
+        margin-bottom: 7px;       
+    }
+    .bot_menu_items{        
+        font-size: 13px;
+        margin-bottom: 6px;
+    }    
+    .bot_menu_hedline:hover::before, .bot_menu_items:hover::before{
+        border-bottom: 1px solid rgb(221, 221, 221);
+        width: 50%;
+        left: 22%;
+    }
+    .bot_menu_items:hover::before{
+        top: 15px;
+    }
+    .bot_menu_hedline:hover::before{
+        top: 19px;
+    }
+    .bot_menu_text {
+        font-size: 12px;
+        font-weight: 300;
+    }
+    .login::after, .about_us_cap::after, .store::after, #basket::after{
+        position: absolute;
+        width: 23px;
+        height: 23px;
+        padding-bottom: 0px;
+        left: 25%;
+        top: -28px;
+    }
+}
+
+
