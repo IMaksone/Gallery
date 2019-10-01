@@ -8,7 +8,9 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
 const multer = require("multer");
-var passport = signUp_signIn.passport;
+var passport = signUp_signIn.passport;/* */
+
+const rimraf = require('rimraf');
 
 
 const app = express();
@@ -28,7 +30,6 @@ var storage = multer.diskStorage({
 
 app.use(multer({storage:storage}).single("image"));
 
-
 app.use(session({
     secret: 'keyboard cat',
     resave: true,
@@ -37,9 +38,9 @@ app.use(session({
         maxAge: 10 * 60 * 1000,
         httpOnly: false,
     }
-})); // session secret
+}));
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+app.use(passport.session());
 app.use(flash());
 
 mongoDB.testConnection();
@@ -53,14 +54,12 @@ app.get('/signUp_signIn', function (req, res, next) {
     res.redirect('/user');
 
 }, function (req, res) {
-
     res.render('Pages/SignUp_signIn', signUp_signIn.auth({
         err_signIn: req.flash('err_signIn'), 
         err_signUp: req.flash('err_signUp')
     },
         req.user
     ));
-
 });
 
 app.post('/signUp', urlencodedParser, signUp_signIn.signUp()
@@ -73,7 +72,6 @@ app.post('/user', urlencodedParser, function (req, res) {
     signUp_signIn.userUpdate(req.body, req.user, res);
 
     setTimeout(() => res.redirect("/user"), 1000);
-    //res.render('Pages/Store', StoreBasketDB.getCatalog(req.body));
 });
 app.get('/logout', function (req, res) {
     req.session.destroy(function (err) {
@@ -86,7 +84,6 @@ app.get('/user', function (req, res, next) {
 
     res.redirect('/signUp_signIn');
 
-
 }, function (req, res) {
     images.getImage(req.user.login, function(result) {
         res.render('Pages/User', signUp_signIn.auth({
@@ -96,8 +93,7 @@ app.get('/user', function (req, res, next) {
         },
             req.user
         ));
-    })
-    
+    })    
 });
 
 /////////////////////////////////////////////////////////////////////////////
@@ -125,6 +121,13 @@ app.post("/upload-image", function (req, res, next) {
 
 app.get('/', function (req, res) {
     res.render('Index', signUp_signIn.auth(undefined, req.user));
+});
+
+
+app.get('/clean', function (req, res) {
+    mongoDB.clean();
+    rimraf('./public/uploadsImg/*', function () { console.log('done'); });
+    res.redirect('/');
 });
 
 app.get('*', function (req, res) {

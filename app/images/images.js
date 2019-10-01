@@ -1,35 +1,5 @@
 const Images = require('../mongoDB/model_images').Images;
 
-
-/*exports.setImage = function controlCheckInput(login, name, description, link, callback) {
-    Images.findOne({ 'name': name,'login': login }).exec((err, img) => {
-        if (err) {
-            console.log('Error in setImage: ' + err);
-        } else if (img) {
-            console.log('У вас уже есть изображение с таким именем');
-            callback(img);
-        } else {
-
-            var newImg = new Images();
-
-            newImg.login = login;
-            newImg.name = name;
-            newImg.description = description;
-            newImg.link = link;
-
-            // сохранения изображения
-            newImg.save(function (err) {
-                if (err) {
-                    console.log('Error in Saving img: ' + err);
-                    throw err;
-                }
-                console.log('Img save');
-            });
-        }
-    });
-  }*/
-
-
 exports.setImage = function (login, name, description, link) {
     var newImg = new Images();
 
