@@ -3,10 +3,6 @@ var mongoDB = require("./app/mongoDB/mongoDB");
 var signUp_signIn = require('./app/signUp_In/signUp_signIn');
 var images = require('./app/images/images');
 
-
-var React = require('react');
-var {render} = require('react-dom');
-
 var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
@@ -124,49 +120,18 @@ app.post("/upload-image", function (req, res, next) {
     }
     res.redirect("/user");
 });
+////////////////////////////////////////////////////
 
 
 app.get('/', function (req, res) {
-    //res.render('Index', signUp_signIn.auth(undefined, req.user));
-
-const SearchList = props => {
-    return (
-        <div>Hey you! {props.request}!</div>
-    )
-};
-
-
-class Search extends React.Component {
-    state = {
-        request: "",
-    };
-
-    onRequest = event =>
-        this.setState({
-            request: event.target.value
-        });
-
-    render = () => (
-        <div>
-            <input type="text" name="search" onChange={this.onRequest} />
-
-            <SearchList request={this.state.request} />
-        </div>
-    )
-};
-
-
-    res.send(render(<Search/>, document.getElementById('search_form')));
+    res.render('Index', signUp_signIn.auth(undefined, req.user));
 });
 
-
-app.get('/:idPage', function (req, res) {
-    res.render('Pages/NoPage', signUp_signIn.auth(undefined, req.user));
-});
-app.get('/:idPage/:idPage1', function (req, res) {
+app.get('*', function (req, res) {
     res.render('Pages/NoPage', signUp_signIn.auth(undefined, req.user));
 });
 
 var server = app.listen(process.env.PORT || 1999, function () {
-    console.log('Server up and running in %d ', server.address().port)
+    console.log('Server up and running in %d ', server.address().port);
+    console.log('Check: http://127.0.0.1:' + server.address().port);
 });
