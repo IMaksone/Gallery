@@ -1,10 +1,11 @@
 body, button, input{
-    font-family: sans-serif;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;;
 }
 
 body{
     height: 100%;
     background-color: rgb(255, 255, 255);
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;;
 }
 button{
     text-decoration: none;
@@ -72,23 +73,40 @@ a{
     margin: 10px;  
     position: relative; 
 }
+.cap_link{
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px solid rgba(50, 201, 168);
+}
+.cap_link:hover{
+    padding: 9px;
+}
 .search_form{    
     width: 80%;
     min-width: 100px;
     display: flex;
-    flex-wrap: nowrap;    
-    border: 1px solid rgba(50, 201, 168, 0.6);
+    flex-wrap: nowrap;  
     border-radius: 20px;
     padding: 1px;
     font-size: 14px;
+    border: 1px solid rgba(50, 201, 168, 0.5);
 }
-
+.cap_link, .search_form {
+    box-shadow: 2px 4px 4px rgba(180, 180, 180, 0.4);    
+}
 .search_form:hover{
-    border: 2px solid rgba(50, 201, 168);
     padding: 0px;
 }
+.cap_link:hover, .search_form:hover{
+    border: 2px solid rgba(50, 201, 168, 0.8);
+    box-shadow: 2px 6px 6px rgba(180, 180, 180, 0.8); 
+}
 .search{
-    width: 100%
+    width: 100%;
+    font-size: 14px;
+}
+.but{
+    font-size: 14px;
 }
 
 /*//////////////////Footer////////////////*/

@@ -4,7 +4,7 @@ exports.mongoose = mongoose;
 const Users = require('../mongoDB/model_user').Users;
 const Images = require('../mongoDB/model_images').Images;
 
-exports.testConnection =  () => {
+exports.testConnection = () => {
     mongoose.connect('mongodb://localhost/test', { useNewUrlParser: true, useUnifiedTopology: true });
 
     var connection = mongoose.connection;

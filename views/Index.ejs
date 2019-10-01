@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <% include Blocks/head.ejs %>
 
@@ -13,8 +14,12 @@
 
     <div class="content">
         <h1>Галерея</h1>
+        <h2><%= err_setImage %></h2>
         <div class="galery">
-            <div class="el">
+            <% for (let i in images) { %>
+                <% include Blocks/img.ejs %>
+            <%}%>
+            <!--<div class="el">
                 <img src="../public/Img/drop-of-water-4478783_1920.jpg" alt="">
                 <div class="description">
                     <h4>Имя автора</4>
@@ -55,14 +60,11 @@
                     <h4>Имя автора</4>
                     <p>Описание</p>
                 </div>
-            </div>
-
-            <div class="el" style="display: none">
-
-            </div>
+            </div>-->
         </div>
     </div>
 
     <% include Blocks/Bot.ejs %>
 </body>
+
 </html>

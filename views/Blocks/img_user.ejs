@@ -1,6 +1,11 @@
-<div class="img">
-    <img src="../../<%= images[i].link%>">
-    
-    <h4>Название: <%= images[i].name%></h4>
-    <p>Описание: <%= images[i].description%></p>
+<div class="el">
+    <img src="<%= images[i].link %>">
+    <div class="description">
+        <h4>Название: <%= images[i].name %></4>
+        <p>Описание: <%= images[i].description %></p>
+    </div>
+    <form method="POST" action="/delete-image">
+        <input type="hidden" name="img" value="<%= images[i].name %>" />
+        <button class="delete" type="submit">X</button>
+    </form>
 </div>

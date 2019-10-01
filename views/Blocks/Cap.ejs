@@ -3,16 +3,15 @@
         <a class="logo" href="/"><span class="logo_text">Gallery</span></a>
     </div>
     <div class="cap_block_bottom">
-        <a class="cap_item" href="/">Галерея</a>
-
+        <a class="cap_item cap_link" href="/">Галерея</a>
 
         <script type="text/babel" src="/public/react/search.js"></script>
 
         <form action="/" class="search_form" id="search_form">
-            <input class="cap_item search" type="search" name="q" placeholder="Поиск по сайту">
+            <input class="cap_item search" type="search" name="q" placeholder="Поиск по сайту (пока не работает)">
             <input class="cap_item but" type="submit" value="Найти">
         </form>
 
-        <a class="cap_item" href="/signUp_signIn"><%= auth == true ? "Кабинет" : "Вход" %></a>
+        <a class="cap_item cap_link" href="/signUp_signIn"><%= auth == true ? "Кабинет" : "Вход" %></a>
     </div>
 </header>

@@ -23,8 +23,8 @@ var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/uploadsImg')
     },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname);
+    filename: function (req, file, cb) {   
+        cb(null, Date.now() + file.originalname);
     }
 });
 
@@ -101,7 +101,7 @@ app.get('/user', function (req, res, next) {
 /////////////////////////////////////////////////////////////////////////////
 
 /////////////Загрузка изображений/////////////////
-app.post("/upload-image", function (req, res, next) {
+app.post("/upload-image", function (req, res) {
     let filedata = req.file;
     console.log(filedata);
     if (!filedata)
@@ -118,9 +118,24 @@ app.post("/upload-image", function (req, res, next) {
 });
 ////////////////////////////////////////////////////
 
+/////////////Удаление изображений/////////////////
+app.post("/delete-image", urlencodedParser, function (req, res) {   
+    images.deleteImage(req.user.login, req.body.img);
+
+    res.redirect("/user");
+});
+////////////////////////////////////////////////////
+
 
 app.get('/', function (req, res) {
-    res.render('Index', signUp_signIn.auth(undefined, req.user));
+    images.getAllImage(function(result) {
+        res.render('Index', signUp_signIn.auth({
+            err_setImage: req.flash('err_setImage'),
+            images: result
+        },
+            req.user
+        ));
+    })
 });
 
 

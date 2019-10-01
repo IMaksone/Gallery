@@ -3,7 +3,7 @@
 
 <head>
     <% include ../Blocks/head.ejs %>
-    <link rel="stylesheet" href="/public/CSS/UserCSS.css" type="text/css" />
+    <link rel="stylesheet" href="/public/CSS/IndexCSS.css" type="text/css" />
 
     <title>Личный кабинет</title>
 </head>
@@ -28,7 +28,7 @@
 
             <div class="you_images">
                 <h3>Ваши изображения</h3>
-                <div class="images">
+                <div class="galery">
                     <%if (images != "") for (let i = 0; i < images.length; i++) {%>
                         <%- include("../Blocks/img_user.ejs", {i: i});%>
                     <%}%>

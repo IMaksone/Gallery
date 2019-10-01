@@ -44,8 +44,29 @@ exports.changeImage = function (login, name, description) {
     });
 }
 
-exports.deleteImage = function (login, name) {
+exports.deleteImage =  (login, name) => {
     Images.deleteOne({ 'name': name, 'login': login }, function (err) {
         if (err) console.log("Error deleteImage: " + err)
     });
+}
+
+exports.getAllImage = (callback) => {
+    Images.find().exec((err, imgs) => {
+        if (err) {
+            console.log('Error in getImage: ' + err);
+        } else if (imgs) {
+            let imgArr = [];
+            for (let i in imgs) {
+                imgArr[i] = {
+                    link: imgs[i].link,
+                    name: imgs[i].name,
+                    description: imgs[i].description,
+                    login: imgs[i].login,
+                } 
+            }
+            callback(imgArr);
+        } else {
+            callback("");
+        }
+    });    
 }
