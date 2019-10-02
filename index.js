@@ -1,4 +1,3 @@
-
 var mongoDB = require("./app/mongoDB/mongoDB");
 var signUp_signIn = require('./app/signUp_In/signUp_signIn');
 var images = require('./app/images/images');
@@ -8,7 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
 const multer = require("multer");
-var passport = signUp_signIn.passport;/* */
+var passport = signUp_signIn.passport;
 
 const rimraf = require('rimraf');
 
@@ -20,10 +19,10 @@ app.set('view engine', 'ejs');
 app.use('/public', express.static('public'));
 
 var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: (req, file, cb) => {
         cb(null, 'public/uploadsImg')
     },
-    filename: function (req, file, cb) {   
+    filename: (req, file, cb) => {   
         cb(null, Date.now() + file.originalname);
     }
 });
@@ -48,12 +47,12 @@ mongoDB.testConnection();
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////........Регистрация и вход..........////////////////////
 /////////////////////////////////////////////////////////////////////////////
-app.get('/signUp_signIn', function (req, res, next) {
+app.get('/signUp_signIn', (req, res, next) => {
     if (!req.isAuthenticated()) return next();
 
     res.redirect('/user');
 
-}, function (req, res) {
+}, (req, res) => {
     res.render('Pages/SignUp_signIn', signUp_signIn.auth({
         err_signIn: req.flash('err_signIn'), 
         err_signUp: req.flash('err_signUp')
@@ -66,26 +65,26 @@ app.post('/signUp', urlencodedParser, signUp_signIn.signUp()
 );
 app.post('/signIn', urlencodedParser, signUp_signIn.signIn()
 );
-app.post('/user', urlencodedParser, function (req, res) {
+app.post('/user', urlencodedParser, (req, res) => {
     if (!req.body) return res.sendStatus(400);
 
     signUp_signIn.userUpdate(req.body, req.user, res);
 
     setTimeout(() => res.redirect("/user"), 1000);
 });
-app.get('/logout', function (req, res) {
-    req.session.destroy(function (err) {
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
         res.redirect('/signUp_signIn');
     })
 });
 
-app.get('/user', function (req, res, next) {
+app.get('/user', (req, res, next) => {
     if (req.isAuthenticated()) return next();
 
     res.redirect('/signUp_signIn');
 
-}, function (req, res) {
-    images.getImage(req.user.login, function(result) {
+}, (req, res) => {
+    images.getImage(req.user.login, (result) => {
         res.render('Pages/User', signUp_signIn.auth({
             err_setImage: req.flash('err_setImage'),
             user: req.user,
@@ -101,7 +100,9 @@ app.get('/user', function (req, res, next) {
 /////////////////////////////////////////////////////////////////////////////
 
 /////////////Загрузка изображений/////////////////
-app.post("/upload-image", function (req, res) {
+app.post("/upload-image", (req, res) => {
+    if (!req.body) return res.sendStatus(400);
+
     let filedata = req.file;
     console.log(filedata);
     if (!filedata)
@@ -119,7 +120,9 @@ app.post("/upload-image", function (req, res) {
 ////////////////////////////////////////////////////
 
 /////////////Удаление изображений/////////////////
-app.post("/delete-image", urlencodedParser, function (req, res) {   
+app.post("/delete-image", urlencodedParser, (req, res) => {      
+    if (!req.body) return res.sendStatus(400);
+    
     images.deleteImage(req.user.login, req.body.img);
 
     res.redirect("/user");
@@ -127,8 +130,8 @@ app.post("/delete-image", urlencodedParser, function (req, res) {
 ////////////////////////////////////////////////////
 
 
-app.get('/', function (req, res) {
-    images.getAllImage(function(result) {
+app.get('/', (req, res) => {
+    images.getAllImage((result) => {
         res.render('Index', signUp_signIn.auth({
             err_setImage: req.flash('err_setImage'),
             images: result
@@ -138,18 +141,21 @@ app.get('/', function (req, res) {
     })
 });
 
-
-app.get('/clean', function (req, res) {
+//////////////////Очистка баз данных, и удаление изображений
+app.get('/clean', (req, res) => {
     mongoDB.clean();
-    rimraf('./public/uploadsImg/*', function () { console.log('done'); });
+    rimraf('./public/uploadsImg/*', () => { console.log('done'); });
     res.redirect('/');
 });
+//////////////////////////////////////////////////////////////
 
-app.get('*', function (req, res) {
+/////Обработка оставшихся запросов
+app.get('*', (req, res) => {
     res.render('Pages/NoPage', signUp_signIn.auth(undefined, req.user));
 });
+///////////////////////
 
-var server = app.listen(process.env.PORT || 1999, function () {
+var server = app.listen(process.env.PORT || 1999, () => {
     console.log('Server up and running in %d ', server.address().port);
     console.log('Check: http://127.0.0.1:' + server.address().port);
 });

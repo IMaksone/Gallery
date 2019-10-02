@@ -1,11 +1,12 @@
 body, button, input{
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;;
 }
-
 body{
     height: 100%;
-    background-color: rgb(255, 255, 255);
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;;
+    background-image: url(../Img/space-3197611_1920.svg);
+    background-attachment: fixed;
+    background-size: 100% auto;
+    background-repeat: repeat-y;
 }
 button{
     text-decoration: none;
@@ -15,11 +16,6 @@ button{
     padding: 0px;
     margin: 0px;
 }
-input{
-    outline: none;
-    background: white;
-    border: none;    
-}
 a{    
     text-decoration: none;
     color: black;
@@ -27,7 +23,7 @@ a{
 
 .content{
     min-height: calc(100vh - 220px);              
-    min-width: 420px;
+    min-width: 200px;
     margin-bottom: 40px;
 }
 
@@ -35,7 +31,7 @@ a{
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    min-width: 480px;
+    min-width: 400px;
 }
 
 /*//////////////////Header////////////////*/
@@ -44,16 +40,16 @@ a{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 .cap_block_top{
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .logo_text{
     font-family: system-ui;
-    font-size: calc(1vw + 24px);
+    font-size: calc(2vw + 24px);
     font-stretch: ultra-expanded;
     letter-spacing: calc(4vw + 10px);
     font-weight: lighter;
@@ -71,7 +67,10 @@ a{
     font-weight: 700;
     white-space: nowrap;  
     margin: 10px;  
-    position: relative; 
+    position: relative;     
+}
+.cap_item, .search{
+    background: rgba(255, 255, 255, 0.85);
 }
 .cap_link{
     border-radius: 15px;
@@ -85,34 +84,39 @@ a{
     width: 80%;
     min-width: 100px;
     display: flex;
-    flex-wrap: nowrap;  
+    flex-direction: column;
+    align-items: center;
     border-radius: 20px;
     padding: 1px;
     font-size: 14px;
-    border: 1px solid rgba(50, 201, 168, 0.5);
-}
-.cap_link, .search_form {
-    box-shadow: 2px 4px 4px rgba(180, 180, 180, 0.4);    
-}
-.search_form:hover{
-    padding: 0px;
-}
-.cap_link:hover, .search_form:hover{
-    border: 2px solid rgba(50, 201, 168, 0.8);
-    box-shadow: 2px 6px 6px rgba(180, 180, 180, 0.8); 
+    background-color: rgba(255, 255, 255, 0);
 }
 .search{
     width: 100%;
     font-size: 14px;
+    padding: 12px;
+    border-radius: 15px;
+    border: 1px solid rgba(50, 201, 168);
 }
-.but{
-    font-size: 14px;
+.search:focus{
+    border: 2px solid rgba(50, 201, 168);    
+    padding: 11px;
+}
+.search:hover{
+    padding: 11px;
+}
+.cap_link, .search {
+    box-shadow: 2px 4px 4px rgba(180, 180, 180, 0.4);    
+}
+.cap_link:hover, .search:hover{
+    border: 2px solid rgba(50, 201, 168);
+    box-shadow: 2px 6px 6px rgba(180, 180, 180, 0.8); 
 }
 
 /*//////////////////Footer////////////////*/
 .bottom_menu{
     width: 100%;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
     height: 50px;    
     position: relative;
 }
@@ -128,24 +132,34 @@ a{
 /*/////////////////////Адаптация под разные экраны//////////////////////////*/
 /*//////////////////////////////////////////////////////////////////////////*/
 
-@media only screen and (max-device-width : 480px) {
+@media only screen and (max-device-width : 480px) {    
+    body{
+        background-size: auto 100%;
+    }
+    h1{
+        font-size: 24px;
+    }
+
     .content{   
         min-width: 280px;
     }
-
+    .cap{
+        margin-bottom: 20px;
+    }
     .bottom_menu, .cap{
         width: 100%;
         margin-left: auto;
         margin-right: auto;
         min-width: 250px;
-    }
-    
+    }    
     .cap_block_bottom{
         width: 98%;    
     }
     .cap_item{
-        font-size: 14px;
+        font-size: 12px;
+        margin: 3px; 
     }
+    
     .bottom_menu{
         min-width: 250px;
         margin-left: auto;

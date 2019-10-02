@@ -1,4 +1,13 @@
-
+img{
+    width: auto;
+    height: auto;
+    max-width: 500px;
+    max-height: 300px;
+    border-radius: 10px;
+}
+h1{
+    margin: 5px;
+}
 
 .content{
     display: flex;
@@ -8,7 +17,9 @@
 .galery{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
     justify-content: center;
 }
 .el{    
@@ -20,13 +31,6 @@
     cursor: pointer;   
     position: relative; 
 }
-img{
-    width: auto;
-    height: auto;
-    max-width: 1000px;
-    max-height: 400px;
-    border-radius: 10px;
-}
 .description{
     display: none;
     position: absolute;
@@ -35,7 +39,7 @@ img{
     font-size: 13px;
     color: rgba(255, 255, 255, 0.8);
 }
-img:hover{
+.el:hover > img{
     box-shadow: 2px 7px 10px rgba(0, 0, 0, 0.6); 
 }
 .el:hover > .description{
@@ -45,6 +49,50 @@ img:hover{
 /*/////////////////////Адаптация под разные экраны//////////////////////////*/
 /*//////////////////////////////////////////////////////////////////////////*/
 
+@media screen and (max-width: 1440px) {    
+    img{
+        max-width: 500px;
+        max-height: 300px;
+    }
+}
+@media screen and (max-width: 1024px) {    
+    img{
+        max-width: 400px;
+        max-height: 220px;
+    }
+}
+@media screen and (max-width: 768px) {    
+    .gallery{
+        display: block;
+    }
+    img{
+        max-width: 760px;
+        max-height: 1000px;
+        width: 100%;
+        height: auto;
+    }
+}
+@media screen and (max-width: 480px) {
+    .gallery{
+        display: block;
+    }
+    img{
+        max-width: 460px;
+        max-height: 700px;
+        width: 100%;
+        height: auto;
+    }
+}
+
+
 @media screen and (max-device-width: 480px) {
-    
+    .gallery{
+        display: block;
+    }
+    img{
+        max-width: 460px;
+        max-height: 700px;
+        width: 100%;
+        height: auto;
+    }
 }

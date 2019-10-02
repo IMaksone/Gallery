@@ -6,11 +6,13 @@ const Users = new mongoose.Schema({
     password: String
 });
 
-Users.methods.setPassword = function (password) {
+// Функция для получения хеша пароля
+Users.methods.setPassword = (password) => {
     this.password = bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
 };
 
-Users.methods.validatePassword = function (password) {
+// Функция для проверки пароля
+Users.methods.validatePassword = (password) => {
     return bCrypt.compareSync(password, this.password);
 };
 

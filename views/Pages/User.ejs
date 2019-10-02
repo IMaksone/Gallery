@@ -3,7 +3,7 @@
 
 <head>
     <% include ../Blocks/head.ejs %>
-    <link rel="stylesheet" href="/public/CSS/IndexCSS.css" type="text/css" />
+    <link rel="stylesheet" href="/public/CSS/UserCSS.css" type="text/css" />
 
     <title>Личный кабинет</title>
 </head>
@@ -15,22 +15,28 @@
 
         <div class="inf_history">
             <div class="inf_acc">
-                <h3>Информация об аккаунте</h3>
-                <p>Login: <%= user.login %></p>                
-            </div> 
-            <form enctype="multipart/form-data" method="post" action="/upload-image" class="upload_image">
+                <h3 class="mar_bott_20">Информация об аккаунте</h3>
+                <p><b>Login:</b> <%= user.login %></p>
+            </div>
+            <form class="form_load" enctype="multipart/form-data" method="post" action="/upload-image"
+                class="upload_image">
+                <h3>Загрузка изображения</h3>
                 <p><%= err_setImage %></p>
-                <p><input type="file" name="image" accept="image/jpeg, image/png" required>                
-                <input type="name" name="name" placeholder="Название" required>
+                <div class="input input_div mar_top_0">
+                    <input class="input_image" type="file" name="image" id="image" accept="image/jpeg, image/png"
+                        required>
+                    <label for="image" class="load_butt">Выбрать файл</label>
+                </div>
+                <input class="input" type="name" name="name" placeholder="Название" required>
                 <textarea type="description" name="description" placeholder="Описание"></textarea>
-                <input type="submit" value="Загрузить"></p>
-            </form> 
+                <input class="butt" type="submit" value="Загрузить">
+            </form>
 
-            <div class="you_images">
-                <h3>Ваши изображения</h3>
-                <div class="galery">
+            <div class="your_images">
+                <h3 class="mar_bott_20">Ваши изображения</h3>
+                <div class="gallery">
                     <%if (images != "") for (let i = 0; i < images.length; i++) {%>
-                        <%- include("../Blocks/img_user.ejs", {i: i});%>
+                    <%- include("../Blocks/img_user.ejs", {i: i});%>
                     <%}%>
                 </div>
             </div>

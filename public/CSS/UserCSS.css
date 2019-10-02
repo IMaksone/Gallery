@@ -1,0 +1,232 @@
+h3{
+    margin: 0px;
+    text-align: center;
+}
+h4{
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+textarea{
+    width: 250px;
+    min-width: 250px;
+}
+.input, textarea{
+    outline: none;
+    background: rgba(50, 201, 168, 0.02);
+    border: 1px solid rgba(50, 201, 168, 0.4);
+    border-radius: 7px;
+    padding: 8px;
+    margin: 10px;
+    margin-left: 0px;
+    padding-left: 16px;
+    font-size: 14px;
+    max-width: 250px;
+}
+.input:hover, textarea:hover{
+    border: 2px solid rgba(50, 201, 168, 0.8);    
+    padding: 7px;
+    padding-left: 15px;
+}
+.input:focus, textarea:hover{
+    border: 2px solid rgba(50, 201, 168);    
+    padding: 7px;
+    padding-left: 15px;
+}
+.butt{
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px; 
+    border-radius: 7px;
+    width: 100px;
+    border: 1px solid rgba(236, 59, 87, 0.6);
+    background-color: rgba(236, 59, 87, 0.02);
+}
+.butt:hover{
+    border: 2px solid rgba(236, 59, 87);    
+    padding-top: 4px;
+    padding-bottom: 4px; 
+}
+.mar_bott_20{
+    margin-bottom: 20px;
+}
+.mar_top_0{
+    margin-top: 0px;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    width: 90%;
+    max-width: 1000px;
+    min-width: 260px;
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.514);  
+}
+.inf_history{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+.inf_acc{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    min-width: 236px;
+}
+.input_div{
+    position: relative;
+    cursor: pointer;
+    width: 100px;
+}
+.input_image{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.load_butt{
+    cursor: pointer;
+}
+.exit{
+    font-size: 14px;
+    padding-top: 3px;
+    padding-bottom: 3px; 
+    border-radius: 7px;
+    position: absolute;
+    right: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    width: 45px;
+    padding-left: 5px;
+}
+.exit:hover{  
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 4px; 
+    border: 2px solid rgb(49, 49, 49);
+}
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.el{
+    flex-basis: auto;
+    display: block;
+    width: auto;
+    height: auto;
+    margin: 10px;
+    cursor: pointer;   
+    position: relative; 
+}
+img{
+    width: auto;
+    height: auto;
+    max-width: 500px;
+    max-height: 300px;
+    border-radius: 10px;
+}
+.description{
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 20px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.el:hover > img{
+    box-shadow: 2px 7px 10px rgba(0, 0, 0, 0.6); 
+}
+.el:hover > .description{
+    display: block;
+}
+.form_load{
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.delete{
+    position: absolute;
+    padding-top: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    right: 10px;
+    top: 10px;
+    font-size: 18px;
+    border-radius: 40px;
+    border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.delete:hover{    
+    font-size: 20px;
+    top: 9px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////Адаптация под разные экраны//////////////////////////*/
+/*//////////////////////////////////////////////////////////////////////////*/
+@media screen and (max-width: 1440px) {    
+    img{
+        max-width: 500px;
+        max-height: 300px;
+    }
+}
+@media screen and (max-width: 1024px) {    
+    img{
+        max-width: 400px;
+        max-height: 220px;
+    }
+}
+@media screen and (max-width: 768px) {    
+    .gallery{
+        display: block;
+    }
+    img{
+        max-width: 760px;
+        max-height: 1000px;
+        width: 100%;
+        height: auto;
+    }
+}
+@media screen and (max-width: 480px) {
+    .gallery{
+        display: block;
+    }
+    img{
+        max-width: 460px;
+        max-height: 700px;
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media screen and (max-device-width: 480px) {    
+    .gallery{
+        display: block;
+    }
+    img{
+        max-width: 460px;
+        max-height: 700px;
+        width: 100%;
+        height: auto;
+    }
+    .content{
+        padding: 10px;
+        width: 95%;
+    }
+    
+    .exit{
+        right: 10px;
+    }
+}

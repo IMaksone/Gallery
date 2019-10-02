@@ -3,6 +3,7 @@ body{
 }
 h3{
     margin-top: 0px;
+    margin-bottom: 10px;
     font-size: 24px;
 }
 input{
@@ -17,12 +18,7 @@ input{
     font-size: 14px;
     width: 300px;
 }
-input:hover{
-    border: 2px solid rgba(50, 201, 168);    
-    padding: 7px;
-    padding-left: 15px;
-}
-input:focus{
+input:hover, input:focus{
     border: 2px solid rgba(50, 201, 168);    
     padding: 7px;
     padding-left: 15px;
@@ -60,13 +56,9 @@ p{
     margin: 20px;
     padding: 20px;
     width: 370px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255, 0.8);
     border-radius: 10px;
     box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.514);    
-}
-
-#warning{
-    margin-top: 25px;
 }
 .butt{
     margin-top: 15px;
@@ -101,7 +93,7 @@ p{
         width: 200px;
     }
     .content{
-        margin-top: 30px;        
+        margin-top: 0px;        
         width: auto;
         margin-left: auto;
         margin-right: auto;

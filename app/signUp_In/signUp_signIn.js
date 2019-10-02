@@ -5,9 +5,7 @@ exports.passport = passport;
 const localStrategy = require('passport-local').Strategy;
 
 //регистрация
-exports.signUp = function signUp() {
-    //let user = new Users;
-
+exports.signUp = signUp = () => {
     passport.use('local-signup', new localStrategy(
         {
             usernameField: 'login',
@@ -16,11 +14,10 @@ exports.signUp = function signUp() {
         },
 
         function (req, login, password, done) {
-
             if (password.length < 6) {
                 done(null, false, req.flash('err_signUp', 'Пароль должен содержать минимум 6 символов'));
             } else {
-                Users.findOne({ 'login': login }, function (err, user) {
+                Users.findOne({ 'login': login }, (err, user) => {
                     if (err) {
                         console.log('Error in SignUp: ' + err);
                         return done(err);
@@ -28,14 +25,13 @@ exports.signUp = function signUp() {
                         console.log('User already exists');
                         return done(null, false, req.flash('err_signUp', 'Пользователь с таким логином уже зарегистрирован'));
                     } else {
-
                         var newUser = new Users();
                         // установка локальных прав доступа пользователя
                         newUser.login = login;
                         newUser.setPassword(password);
 
                         // сохранения пользователя
-                        newUser.save(function (err) {
+                        newUser.save((err) => {
                             if (err) {
                                 console.log('Error in Saving user: ' + err);
                                 throw err;
@@ -50,13 +46,13 @@ exports.signUp = function signUp() {
     ));
 
     //сериализация пользователя
-    passport.serializeUser(function (user, done) {
+    passport.serializeUser((user, done) => {
         done(null, user._id);
     });
 
     //десериализация пользователя 
-    passport.deserializeUser(function (_id, done) {
-        Users.findById(_id).then(function (user) {
+    passport.deserializeUser((_id, done) => {
+        Users.findById(_id).then((user) => {
             if (user) {
                 done(null, user);
             } else {
@@ -76,20 +72,17 @@ exports.signUp = function signUp() {
 }
 
 //вход
-exports.signIn = function signIn() {
-
-    //let user = new Users;
-
+exports.signIn = signIn = () => {
     passport.use('local-signin', new localStrategy(
         {
             usernameField: 'login',
             passwordField: 'password',
-            passReqToCallback: true            
+            passReqToCallback: true
         },
 
-        function (req, login, password, done) {
-            Users.findOne({ 'login': login }, function (err, user) {
-            }).then(function (user) {
+        (req, login, password, done) => {
+            Users.findOne({ 'login': login }, (err, user) => {
+            }).then((user) => {
                 if (!user) {
                     return done(null, false, req.flash('err_signIn', 'Не правильно введен логин'));
                 }
@@ -98,7 +91,7 @@ exports.signIn = function signIn() {
                 }
                 return done(null, user);
 
-            }).catch(function (err) {
+            }).catch((err) => {
                 console.log("Error logIn:", err);
                 return done(null, false, req.flash('err_signIn', 'Не известная ошибка входа'));
 
@@ -115,8 +108,8 @@ exports.signIn = function signIn() {
     });
 }
 
-//шапка
-var auth = function auth(func, user) {
+//Отображение в шапке результатов аутентификации
+var auth = auth = (func, user) => {
     //console.log(body);
     if (func == undefined) var func = [];
     //else if (typeof func != Object)

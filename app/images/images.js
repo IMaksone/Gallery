@@ -1,6 +1,7 @@
 const Images = require('../mongoDB/model_images').Images;
 
-exports.setImage = function (login, name, description, link) {
+// Функция сохранения в базу загруженных изображения
+exports.setImage = (login, name, description, link) => {
     var newImg = new Images();
 
     newImg.login = login;
@@ -10,7 +11,7 @@ exports.setImage = function (login, name, description, link) {
     console.log(newImg);
 
     // сохранения изображения
-    newImg.save(function (err) {
+    newImg.save((err) => {
         if (err) {
             console.log('Error in Saving img: ' + err);
             throw err;
@@ -19,7 +20,8 @@ exports.setImage = function (login, name, description, link) {
     });
 }
 
-exports.getImage = function (login, callback) {
+// Функция для получения всех изображений пользователя
+exports.getImage = (login, callback) => {
     Images.find({ 'login': login }).exec((err, imgs) => {
         if (err) {
             console.log('Error in getImage: ' + err);
@@ -31,25 +33,27 @@ exports.getImage = function (login, callback) {
     });
 }
 
+// Функция изменения информации об изображении (имя и описание)
 exports.changeImage = function (login, name, description) {
     Images.findOne({ 'name': name, 'login': login }, function (err, user) {
         if (err) {
             console.log('Error in setImage: ' + err);
         } else if (img) {
             img.changeImage(name, description);
-
         } else {
             console.log('Изображение не найдено');
         }
     });
 }
 
+// Функция удаления одного изображения
 exports.deleteImage =  (login, name) => {
     Images.deleteOne({ 'name': name, 'login': login }, function (err) {
         if (err) console.log("Error deleteImage: " + err)
     });
 }
 
+// Функция для получения всех изображений всех пользователей
 exports.getAllImage = (callback) => {
     Images.find().exec((err, imgs) => {
         if (err) {
