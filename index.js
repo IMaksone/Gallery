@@ -153,7 +153,7 @@ app.get('/clean', (req, res) => {
 app.get('*', (req, res) => {
     res.render('Pages/NoPage', signUp_signIn.auth(undefined, req.user));
 });
-///////////////////////
+//////////////////////
 
 var server = app.listen(process.env.PORT || 1999, () => {
     console.log('Server up and running in %d ', server.address().port);
